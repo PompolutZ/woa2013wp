@@ -1,0 +1,100 @@
+﻿<phone:PhoneApplicationPage x:Class="WackenOpenAir.Views.AboutPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            shell:SystemTray.BackgroundColor="Black"
+                            shell:SystemTray.ForegroundColor="#FFDB9618"
+                            shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary Source="../Themes/Generic.xaml" />
+    </phone:PhoneApplicationPage.Resources>
+    <!--  LayoutRoot is the root grid where all page content is placed  -->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="../AppBackground.png" />
+        </Grid.Background>
+        <!--  TitlePanel contains the name of the application and page title  -->
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle"
+                       Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       Text="{StaticResource WackenOpenAirAppTitle}" />
+            <TextBlock x:Name="PageTitle"
+                       Margin="9,-7,0,0"
+                       Foreground="{StaticResource WackenOpenAirAppThemeBrush}"
+                       Style="{StaticResource PhoneTextTitle1Style}"
+                       Text="about" />
+        </StackPanel>
+
+        <!--  ContentPanel - place additional content here  -->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock Margin="10">
+                    <Run FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                         Foreground="{StaticResource WackenOpenAirAppThemeBrush}"
+                         Text="{Binding Title}" />
+                    <Run FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                         Foreground="{StaticResource WackenOpenAirAppThemeBrush}"
+                         Text=" Preview" />
+                </TextBlock>
+                <TextBlock Margin="10, 0"
+                           FontSize="{StaticResource PhoneFontSizeLarge}"
+                           Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                           Text="by Oleh Lutsenko" />
+
+                <TextBlock Margin="10" Foreground="{StaticResource WackenOpenAirPlainTextBrush}">
+                    <Run Text="Version: " />
+                    <Run Text="{Binding Version}" />
+                </TextBlock>
+                <TextBlock Margin="10, 10, 10, 2"
+                           Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                           Text="If you like this application, please:"
+                           TextWrapping="Wrap" />
+                <HyperlinkButton HorizontalAlignment="Left"
+                                 Content="Review it"
+                                 FontSize="{StaticResource PhoneFontSizeLarge}"
+                                 Foreground="{StaticResource WackenOpenAirAppThemeBrush}">
+                </HyperlinkButton>
+
+                <TextBlock Margin="10, 20, 25, 2"
+                           Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                           Text="If you have any ideas or thoughts how this app could be improved or maybe you found a bug you desire to be fixed, please, feel free to drop us an email:"
+                           TextWrapping="Wrap" />
+
+                <HyperlinkButton HorizontalAlignment="Left"
+                                 Content="{Binding SupportEmail}"
+                                 Foreground="{StaticResource WackenOpenAirAppThemeBrush}">
+                </HyperlinkButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+    <!--  Sample code showing usage of ApplicationBar  -->
+    <!--
+        <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+        <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+        <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+        <shell:ApplicationBar.MenuItems>
+        <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+        <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+        </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+        </phone:PhoneApplicationPage.ApplicationBar>
+    -->
+
+</phone:PhoneApplicationPage>

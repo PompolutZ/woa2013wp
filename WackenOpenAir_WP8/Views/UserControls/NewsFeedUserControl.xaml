@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WackenOpenAir.Views.UserControls.NewsFeedUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Themes/Generic.xaml" />
+                <ResourceDictionary />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <TextBlock x:Name="GettingDataErrorMessage"
+                   Margin="10"
+                   FontSize="{StaticResource PhoneFontSizeLarge}"
+                   Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                   Text="{Binding Path=AppResources.MainWindow_InternetConnectionProblem, Source={StaticResource LocalizedStrings}}"
+                   TextWrapping="Wrap"
+                   Visibility="{Binding InternetConnectionProblem,
+                                        Converter={StaticResource Bool2VisibilityConverter}}" />
+
+        <ListBox x:Name="NewsFeed"
+                 Margin="13 0"
+                 ItemTemplate="{StaticResource NewsFeedItemTemplate}"
+                 ItemsSource="{Binding NewsFeed}"
+                 Visibility="{Binding InternetConnectionProblem,
+                                      Converter={StaticResource InvertedBool2VisibilityConverter}}" />
+    </Grid>
+</UserControl>

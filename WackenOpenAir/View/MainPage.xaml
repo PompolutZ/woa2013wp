@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage x:Class="WackenOpenAir.View.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            xmlns:scm="clr-namespace:System.ComponentModel;assembly=System.Windows"
+                            d:DesignHeight="696"
+                            d:DesignWidth="480"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Orientation="Portrait"
+                            shell:SystemTray.BackgroundColor="Black"
+                            shell:SystemTray.ForegroundColor="#FFCCCCCC"
+                            shell:SystemTray.IsVisible="True"
+                            SupportedOrientations="Portrait"
+                            mc:Ignorable="d">
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Generic.xaml" />
+                <ResourceDictionary>
+                    <CollectionViewSource Source="{Binding Lineup}" x:Key="cvs">
+                        <CollectionViewSource.SortDescriptions>
+                            <scm:SortDescription PropertyName="Name"/>
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--  LayoutRoot is the root grid where all page content is placed  -->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="../AppBackground.png" />
+        </Grid.Background>
+        <!--  Pivot Control  -->
+        <controls:Pivot Title="{StaticResource WackenOpenAirAppTitle}" HeaderTemplate="{StaticResource PivotItemHeader}"
+                        TitleTemplate="{StaticResource WackenOpenAirAppPivotTitle}">
+            <!--  Pivot item one  -->
+            <controls:PivotItem Header="{Binding Path=AppResources.MainWindow_NewsTitle, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <TextBlock x:Name="GettingDataErrorMessage"
+                               Margin="10"
+                               Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                               Text="We're having troubles with getting data right now. Probably you don't have Internet connection."
+                               TextWrapping="Wrap"
+                               Visibility="Collapsed" />
+
+                    <ListBox x:Name="NewsFeed"
+                             Margin="13,0"
+                             ItemsSource="{Binding FeedItems}"
+                             ItemTemplate="{StaticResource NewsFeedItemTemplate}"
+                             SelectionChanged="NewsFeedSelectionChanged" />
+                </Grid>
+            </controls:PivotItem>
+
+            <!--  Pivot item two  -->
+            <controls:PivotItem Header="{Binding Path=AppResources.MainWindow_LineupPreviewTitle, Source={StaticResource LocalizedStrings}}"
+                                Foreground="{StaticResource WackenOpenAirPlainTextBrush}">
+                <Grid>
+                    <ScrollViewer>
+                        <ItemsControl x:Name="Lineup"
+                                      ItemsSource="{Binding Source={StaticResource cvs}}"
+                                      ItemTemplate="{StaticResource LineupItemTemplate}" />
+                    </ScrollViewer>
+                        <!--<TextBlock Margin="20"
+                                   HorizontalAlignment="Center"
+                                   FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                                   Foreground="{StaticResource Wacken2013PlainTextBrush}"
+                                   Text="Note! The lineup is not finally determined yet. Please check for lineup preview in upcomming versions."
+                                   TextWrapping="Wrap" />-->
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+</phone:PhoneApplicationPage>

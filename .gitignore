@@ -1,0 +1,25 @@
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Mercurial specific files
+.hg/
+.hgignore
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Merge results files
+*.orig
+
+# NuGet packages
+packages/

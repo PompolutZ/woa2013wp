@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="WackenOpenAirAppTitle">WACKEN OPEN AIR 2014</system:String>
+    
+    <Color x:Key="WackenOpenAirAppThemeColor">#FFDB9618</Color>
+    <Color x:Key="WackenOpenAirAppPlainTextColor">#FFE0E0E0</Color>
+
+    <SolidColorBrush x:Key="WackenOpenAirAppThemeBrush" Color="{StaticResource WackenOpenAirAppThemeColor}" />
+    <SolidColorBrush x:Key="WackenOpenAirPlainTextBrush" Color="{StaticResource WackenOpenAirAppPlainTextColor}" />
+
+    <DataTemplate x:Key="WackenOpenAirAppPivotTitle">
+        <TextBlock Text="{StaticResource WackenOpenAirAppTitle}" Foreground="{StaticResource WackenOpenAirPlainTextBrush}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="PivotItemHeader">
+        <TextBlock Foreground="{StaticResource WackenOpenAirAppThemeBrush}" Text="{Binding}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="NewsFeedItemTemplate">
+        <Grid Margin="0,0,0,18">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Width="90"
+                        Height="90"
+                        Margin="0 12 12 12"
+                        VerticalAlignment="Top"
+                        Background="{StaticResource WackenOpenAirAppThemeBrush}">
+                <TextBlock HorizontalAlignment="Center"
+                           FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                           Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                           Text="{Binding NewsItemPublishDate,
+                                          StringFormat=\{0:MMM\}}" />
+                <TextBlock HorizontalAlignment="Center"
+                           FontSize="{StaticResource PhoneFontSizeLarge}"
+                           Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                           Text="{Binding NewsItemPublishDate,
+                                          StringFormat=dd}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="1"
+                       FontSize="{StaticResource PhoneFontSizeLarge}"
+                       Foreground="{StaticResource WackenOpenAirAppThemeBrush}"
+                       Text="{Binding NewsItemTitle}"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                       Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                       Text="{Binding NewsItemDetails}"
+                       TextWrapping="Wrap" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LineupItemTemplate">
+        <Grid Margin="0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Width="120"
+                   Height="120"
+                   Source="{Binding ImageUrl}"
+                   Stretch="UniformToFill" />
+
+            <TextBlock VerticalAlignment="Top" 
+                       Margin="10 -12 0 0" 
+                       Grid.Column="1" 
+                       FontSize="{StaticResource PhoneFontSizeExtraLarge}" 
+                       Foreground="{StaticResource WackenOpenAirPlainTextBrush}"
+                       Text="{Binding Name}" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
+
