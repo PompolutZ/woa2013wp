@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WackenOpenAir.Utilities;
@@ -8,7 +7,7 @@ namespace WackenOpenAir.Services
 {
     public class LineupService
     {
-        private const string WackenLineupFileSkyDriveAddress = "https://dl.dropboxusercontent.com/u/30119691/wacken.xml";
+        private const string WackenLineupFileSkyDriveAddress = "https://raw.github.com/PompolutZ/woa2013wp/master/xternal/wacken.xml";
 
         public async Task LoadLineup()
         {
